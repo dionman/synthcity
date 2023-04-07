@@ -53,6 +53,9 @@ class TimeStepEmbedding(nn.Module):
         d, T = self.dim, self.max_period
         mid = d // 2
         fs = torch.exp(-math.log(T) / mid * torch.arange(mid, dtype=torch.float32))
+        # Print the devices of the tensors involved
+        print("Tensor timesteps is on device:", timesteps.device)
+        print("Tensor fs is on device:", fs.device)
         args = timesteps[:, None].float() * fs[None]
         emb = torch.cat([torch.cos(args), torch.sin(args)], dim=-1)
         return self.fc(emb)
