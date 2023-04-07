@@ -56,7 +56,7 @@ class TimeStepEmbedding(nn.Module):
         # Print the devices of the tensors involved
         print("Tensor timesteps is on device:", timesteps.device)
         print("Tensor fs is on device:", fs.device)
-        args = timesteps[:, None].float() * fs[None]
+        args = timesteps[:, None].float() * fs[None].to('cuda')
         emb = torch.cat([torch.cos(args), torch.sin(args)], dim=-1)
         return self.fc(emb)
 
