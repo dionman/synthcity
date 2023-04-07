@@ -223,7 +223,7 @@ class TabDDPMPlugin(Plugin):
             self._cond_dist = self._cond_dist / self._cond_dist.sum()
             self.target_name = cond.name
 
-        df = self.encoder.fit_transform(df)
+        # df = self.encoder.fit_transform(df)
 
         if cond is not None:
             if type(cond) is str:
