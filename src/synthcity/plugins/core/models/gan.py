@@ -315,6 +315,8 @@ class GAN(nn.Module):
 
         fixed_noise = torch.randn(count, self.n_units_latent, device=self.device)
         fixed_noise = self._append_optional_cond(fixed_noise, cond)
+        print("fixed noise at forward")
+        print(f"cond {cond} is used here!")
 
         return self.generator(fixed_noise)
 
